@@ -1,0 +1,43 @@
+.main {
+  display: flex;
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:18px;
+    width: 100%;
+
+    .cours {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      border-radius: 18px;
+      box-shadow: 0 10px 13px -4px rgb(35 35 95 / 19%);
+
+      .image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          height: 162px;
+        }
+      }
+
+
+
+      .titleCourse {
+        padding: 12px 18px 18px;
+        font:bold 18px/1 sans-serif;
+        background: white;
+      }
+    }
+  }
+}
+
