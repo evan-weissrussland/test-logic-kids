@@ -1,16 +1,37 @@
-.main {
-  display: flex;
+
+.wrapper {
+  width: 100%;
+  padding: 24px;
 
   .sidebar {
+    position: fixed;
+
     display: flex;
     flex-direction: column;
+
+    width: 264px;
+    padding: 12px;
+
+    border: 1px solid #CFCFE4;
+    border-radius: 18px;
+
+    .courseTitle {
+      padding: 12px;
+      border-radius: 12px;
+
+      &:hover, &.active {
+        cursor: pointer;
+        color: #fff;
+        background: #5FBF77;
+      }
+    }
   }
 
   .content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap:18px;
-    width: 100%;
+    gap: 18px;
+    margin-left: 288px;
 
     .cours {
       overflow: hidden;
@@ -30,14 +51,14 @@
         }
       }
 
-
-
       .titleCourse {
         padding: 12px 18px 18px;
-        font:bold 18px/1 sans-serif;
         background: white;
       }
     }
   }
+
 }
+
+
 

@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  font-size: 100%;
+  font:bold 18px/1 'Nunito';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -9,6 +9,10 @@ html {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+button {
+  all:unset;
 }
 
 input,
@@ -29,6 +33,12 @@ a:visited {
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  color: #39414B;
+}
+ul, li {
+  list-style: none;
   margin: 0;
   padding: 0;
 }

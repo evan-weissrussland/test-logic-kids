@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import clsx from 'clsx'
+
 import s from './App.module.scss'
 
 const useFilterCourses = (courses: Cours[] | undefined, filter: '' | FilterType) => {
@@ -69,52 +71,52 @@ export function App() {
   }
 
   return (
-    <main className={s.main}>
-      <aside className={s.sidebar}>
-        <button
+    <div className={s.wrapper}>
+      <ul className={s.sidebar}>
+        <li
+          className={clsx(s.courseTitle, filterCourses === '' && s.active)}
           onClick={() => filterHandler('')}
-          style={{ background: filterCourses === '' ? 'blue' : '' }}
         >
           Все темы
-        </button>
-        <button
+        </li>
+        <li
+          className={clsx(s.courseTitle, filterCourses === coursesName.logic && s.active)}
           onClick={() => filterHandler(coursesName.logic)}
-          style={{ background: filterCourses === coursesName.logic ? 'blue' : '' }}
         >
           Логика и мышление
-        </button>
-        <button
+        </li>
+        <li
+          className={clsx(s.courseTitle, filterCourses === coursesName.mystery && s.active)}
           onClick={() => filterHandler(coursesName.mystery)}
-          style={{ background: filterCourses === coursesName.mystery ? 'blue' : '' }}
         >
           Загадки
-        </button>
-        <button
+        </li>
+        <li
+          className={clsx(s.courseTitle, filterCourses === coursesName.puzzles && s.active)}
           onClick={() => filterHandler(coursesName.puzzles)}
-          style={{ background: filterCourses === coursesName.puzzles ? 'blue' : '' }}
         >
           Головоломки
-        </button>
-        <button
+        </li>
+        <li
+          className={clsx(s.courseTitle, filterCourses === coursesName.world && s.active)}
           onClick={() => filterHandler(coursesName.world)}
-          style={{ background: filterCourses === coursesName.world ? 'blue' : '' }}
         >
           Окружающий мир
-        </button>
-        <button
+        </li>
+        <li
+          className={clsx(s.courseTitle, filterCourses === coursesName.chess && s.active)}
           onClick={() => filterHandler(coursesName.chess)}
-          style={{ background: filterCourses === coursesName.chess ? 'blue' : '' }}
         >
           Шахматы
-        </button>
-        <button
+        </li>
+        <li
+          className={clsx(s.courseTitle, filterCourses === coursesName.countries && s.active)}
           onClick={() => filterHandler(coursesName.countries)}
-          style={{ background: filterCourses === coursesName.countries ? 'blue' : '' }}
         >
           Страны и столицы
-        </button>
-      </aside>
+        </li>
+      </ul>
       <div className={s.content}>{mappedCourses}</div>
-    </main>
+    </div>
   )
 }
