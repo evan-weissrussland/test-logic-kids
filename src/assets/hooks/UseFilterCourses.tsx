@@ -1,6 +1,6 @@
 import { FilterType, coursesName } from '@/app/model/coursesName'
 import { Course } from '@/app/store/reducer'
-import { CourseItem } from '@/components/CourseItem/CourseItem'
+import { CourseItem } from '@/features/ui/CourseItem/CourseItem'
 
 export const useFilterCourses = (courses: Course[], filter: FilterType) => {
   if (courses) {

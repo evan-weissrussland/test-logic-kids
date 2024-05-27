@@ -4,11 +4,11 @@ import { FilterType, coursesName } from '@/app/model/coursesName'
 import { appReducer, initialState, setFilterCourses } from '@/app/store/reducer'
 import { useFetchCourses } from '@/assets/hooks/UseFetchCourses'
 import { useFilterCourses } from '@/assets/hooks/UseFilterCourses'
-import { Content } from '@/components/Content/Content'
-import { CourseTitle } from '@/components/CourseTitle/CourseTitle'
-import { Error } from '@/components/Error/Error'
-import { Loader } from '@/components/Loader/Loader'
-import { Sidebar } from '@/components/Sidebar/Sidebar'
+import { Content } from '@/features/ui/Content/Content'
+import { CourseTitle } from '@/features/ui/CourseTitle/CourseTitle'
+import { Sidebar } from '@/features/ui/Sidebar/Sidebar'
+import { ErrorMessage } from '@/shared/ui/ErrorMessage/ErrorMessage'
+import { Loader } from '@/shared/ui/Loader/Loader'
 import clsx from 'clsx'
 
 import s from './App.module.scss'
@@ -25,7 +25,17 @@ export function App() {
   }, [])
 
   if (state.error) {
-    return <Error error={state.error} />
+    return <ErrorMessage error={state.error} />
+  }
+
+  const compareFilterCoursWithCoursesName = {
+    all: state.filterCourses === coursesName.all,
+    chess: state.filterCourses === coursesName.chess,
+    countries: state.filterCourses === coursesName.countries,
+    logic: state.filterCourses === coursesName.logic,
+    mystery: state.filterCourses === coursesName.mystery,
+    puzzles: state.filterCourses === coursesName.puzzles,
+    world: state.filterCourses === coursesName.world,
   }
 
   return (
@@ -33,39 +43,39 @@ export function App() {
       {state.isLoading && <Loader />}
       <Sidebar className={s.sidebar}>
         <CourseTitle
-          className={clsx(s.courseTitle, state.filterCourses === coursesName.all && s.active)}
+          className={clsx(s.courseTitle, compareFilterCoursWithCoursesName.all && s.active)}
           label={coursesName.all}
-          onClickHandler={state.filterCourses !== coursesName.all ? filterHandler : () => {}}
+          onClickHandler={!compareFilterCoursWithCoursesName.all ? filterHandler : () => {}}
         />
         <CourseTitle
-          className={clsx(s.courseTitle, state.filterCourses === coursesName.logic && s.active)}
+          className={clsx(s.courseTitle, compareFilterCoursWithCoursesName.logic && s.active)}
           label={coursesName.logic}
-          onClickHandler={state.filterCourses !== coursesName.logic ? filterHandler : () => {}}
+          onClickHandler={!compareFilterCoursWithCoursesName.logic ? filterHandler : () => {}}
         />
         <CourseTitle
-          className={clsx(s.courseTitle, state.filterCourses === coursesName.mystery && s.active)}
+          className={clsx(s.courseTitle, compareFilterCoursWithCoursesName.mystery && s.active)}
           label={coursesName.mystery}
-          onClickHandler={state.filterCourses !== coursesName.mystery ? filterHandler : () => {}}
+          onClickHandler={!compareFilterCoursWithCoursesName.mystery ? filterHandler : () => {}}
         />
         <CourseTitle
-          className={clsx(s.courseTitle, state.filterCourses === coursesName.puzzles && s.active)}
+          className={clsx(s.courseTitle, compareFilterCoursWithCoursesName.puzzles && s.active)}
           label={coursesName.puzzles}
-          onClickHandler={state.filterCourses !== coursesName.puzzles ? filterHandler : () => {}}
+          onClickHandler={!compareFilterCoursWithCoursesName.puzzles ? filterHandler : () => {}}
         />
         <CourseTitle
-          className={clsx(s.courseTitle, state.filterCourses === coursesName.world && s.active)}
+          className={clsx(s.courseTitle, compareFilterCoursWithCoursesName.world && s.active)}
           label={coursesName.world}
-          onClickHandler={state.filterCourses !== coursesName.world ? filterHandler : () => {}}
+          onClickHandler={!compareFilterCoursWithCoursesName.world ? filterHandler : () => {}}
         />
         <CourseTitle
-          className={clsx(s.courseTitle, state.filterCourses === coursesName.chess && s.active)}
+          className={clsx(s.courseTitle, compareFilterCoursWithCoursesName.chess && s.active)}
           label={coursesName.chess}
-          onClickHandler={state.filterCourses !== coursesName.chess ? filterHandler : () => {}}
+          onClickHandler={!compareFilterCoursWithCoursesName.chess ? filterHandler : () => {}}
         />
         <CourseTitle
-          className={clsx(s.courseTitle, state.filterCourses === coursesName.countries && s.active)}
+          className={clsx(s.courseTitle, compareFilterCoursWithCoursesName.countries && s.active)}
           label={coursesName.countries}
-          onClickHandler={state.filterCourses !== coursesName.countries ? filterHandler : () => {}}
+          onClickHandler={!compareFilterCoursWithCoursesName.countries ? filterHandler : () => {}}
         />
       </Sidebar>
       <Content className={s.content}>{filtredCourses} </Content>

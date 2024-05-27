@@ -1,6 +1,6 @@
 import { Course } from '@/app/store/reducer'
 
-import s from '@/components/CourseItem/CourseItem.module.scss'
+import s from '@/features/ui/CourseItem/CourseItem.module.scss'
 
 type Props = {
   course: Course

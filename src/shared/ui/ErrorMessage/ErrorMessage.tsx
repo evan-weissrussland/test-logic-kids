@@ -1,6 +1,6 @@
 type Props = {
   error: string
 }
-export const Error = ({ error }: Props) => {
+export const ErrorMessage = ({ error }: Props) => {
   return <div>{error}</div>
 }
